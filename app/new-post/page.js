@@ -1,13 +1,13 @@
-"use client"
-
 import { storePost } from '@/lib/posts';
 import {redirect} from "next/navigation";
-import FormSubmit from "@/components/FormSubmit";
-import {useFormState} from "react-dom";
+import FormPost from "@/components/FormPost";
 
 export default function NewPostPage() {
-  async function createPost(formData) {
+  async function createPost(previousState, formData) {
     "use server";
+
+    console.log("From Data", formData);
+    console.log("previousState", previousState);
 
     const title = formData.get('title');
     const image = formData.get('image');
@@ -23,7 +23,7 @@ export default function NewPostPage() {
         message: 'Please enter a title'
       });
     }
-    if(!image) {
+    if(!image || !image.size) {
       errors.push({
         label: "image",
         message: 'Please upload an image'
@@ -40,6 +40,8 @@ export default function NewPostPage() {
       return {errors}
     }
 
+    return
+
     await storePost({
       imageUrl: '',
       title,
@@ -50,35 +52,10 @@ export default function NewPostPage() {
     redirect("/feed")
   }
 
-  const [state, formAction] = useFormState(createPost, {});
-
-
   return (
     <>
-      <h1>Create a new post</h1>
-      <form action={formAction}>
-        <p className="form-control">
-          <label htmlFor="title">Title</label>
-          <input type="text" id="title" name="title" required/>
-        </p>
-        <p className="form-control">
-          <label htmlFor="image">Image URL</label>
-          <input
-            type="file"
-            accept="image/png, image/jpeg"
-            id="image"
-            name="image"
-            required
-          />
-        </p>
-        <p className="form-control">
-          <label htmlFor="content">Content</label>
-          <textarea id="content" name="content" rows="5" required/>
-        </p>
-        <p className="form-actions">
-          <FormSubmit />
-        </p>
-      </form>
+      <h1 className={"font-merryweather text-4xl font-bold mb-8"}>Create a new post</h1>
+      <FormPost action={createPost} />
     </>
   );
 }
