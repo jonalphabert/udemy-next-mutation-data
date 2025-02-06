@@ -9,13 +9,13 @@ export default function FormPost() {
 
     return <>
         <form action={formAction}>
-            <p className="form-control mb-4">
+            <div className="form-control mb-4">
                 <label htmlFor="title">Title</label>
                 <input type="text" id="title" name="title"/>
                 { state?.errors ? ( state.errors.map((item, index) => item.label === "title" && <div key={`title-error-${index}`} className="text-red-400 text-sm ">{item.message}</div>) ): null }
-            </p>
-            <p className="form-control mb-4">
-                <label htmlFor="image">Image URL</label>
+            </div>
+            <div className="form-control mb-4">
+                <label htmlFor="image">Image</label>
                 <input
                     type="file"
                     accept="image/png, image/jpeg"
@@ -24,12 +24,12 @@ export default function FormPost() {
 
                 />
                 { state?.errors ? ( state.errors.map((item, index) => item.label === "image" && <div key={`title-error-${index}`} className="text-red-400 text-sm ">{item.message}</div>) ): null }
-            </p>
-            <p className="form-control mb-4">
+            </div>
+            <div className="form-control mb-4">
                 <label htmlFor="content">Content</label>
                 <textarea id="content" name="content" rows="5" />
                 { state?.errors ? ( state.errors.map((item, index) => item.label === "content" && <div key={`title-error-${index}`} className="text-red-400 text-sm ">{item.message}</div>) ): null }
-            </p>
+            </div>
             <p className="form-actions">
                 <FormSubmit/>
             </p>
