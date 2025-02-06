@@ -22,6 +22,10 @@ The scopes of this course are
 
 In this course, I little bit change the tech stack that used on this project
 
+<img height="48" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/next_js.png">
+<img height="48" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/tailwind_css.png">
+<img height="48" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/sqlite.png">
+
 ## Getting Started
 
 If you're interesting the outcome of this course, you can do clone this repo. After that you should run this command
