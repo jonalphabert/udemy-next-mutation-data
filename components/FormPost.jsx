@@ -2,10 +2,10 @@
 
 import FormSubmit from "@/components/FormSubmit";
 import {useActionState} from "react";
-import createPost from "@/actions/createpost";
+import posts from "@/actions/posts";
 
 export default function FormPost() {
-    const [state, formAction] = useActionState(createPost, {});
+    const [state, formAction] = useActionState(posts, {});
 
     return <>
         <form action={formAction}>

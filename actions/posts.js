@@ -1,9 +1,9 @@
 "use server"
-import {storePost} from "@/lib/posts";
+import {storePost, updatePostLikeStatus} from "@/lib/posts";
 import {redirect} from "next/navigation";
 import {uploadImage} from "@/lib/cloudinary";
 
-export default async function createPost(previousState, formData) {
+export default async function posts(previousState, formData) {
     const title = formData.get('title');
     const image = formData.get('image');
     const content = formData.get('content');
@@ -54,5 +54,9 @@ export default async function createPost(previousState, formData) {
     })
 
     redirect("/feed")
+}
+
+export async function tooglePostLikeStatus(postId){
+    updatePostLikeStatus(postId,2)
 }
 
