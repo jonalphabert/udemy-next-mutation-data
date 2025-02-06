@@ -11,6 +11,10 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        merryweather : "var(--font-merryweather)",
+        montserrat: "var(--font-montserrat)",
+      }
     },
   },
   plugins: [],
