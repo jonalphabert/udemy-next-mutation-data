@@ -2,6 +2,7 @@
 import {storePost, updatePostLikeStatus} from "@/lib/posts";
 import {redirect} from "next/navigation";
 import {uploadImage} from "@/lib/cloudinary";
+import {revalidatePath} from "next/cache";
 
 export default async function posts(previousState, formData) {
     const title = formData.get('title');
@@ -58,5 +59,6 @@ export default async function posts(previousState, formData) {
 
 export async function tooglePostLikeStatus(postId){
     updatePostLikeStatus(postId,2)
+    revalidatePath('/', "layout")
 }
 
